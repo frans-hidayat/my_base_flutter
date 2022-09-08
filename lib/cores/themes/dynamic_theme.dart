@@ -4,16 +4,15 @@ import 'package:my_base_flutter/cores/themes/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
-typedef ThemedWidgetBuilder = Widget Function(
-    BuildContext context, AppThemeType data);
+typedef ThemedWidgetBuilder = Widget Function(BuildContext context, AppThemeType data);
 
 typedef ThemeDataWithBrightnessBuilder = ThemeData Function(AppThemeType type);
 
 class DynamicTheme extends StatefulWidget {
-  const DynamicTheme({
-    Key key,
-    this.themedWidgetBuilder,
-    this.defaultTheme = AppThemeType.Maroon,
+  DynamicTheme({
+    Key? key,
+    required this.themedWidgetBuilder,
+    this.defaultTheme = AppThemeType.maroon,
   }) : super(key: key);
 
   /// Builder that gets called when the brightness or theme changes
@@ -27,13 +26,13 @@ class DynamicTheme extends StatefulWidget {
   @override
   DynamicThemeState createState() => DynamicThemeState();
 
-  static DynamicThemeState of(BuildContext context) {
-    return context.findAncestorStateOfType<State<DynamicTheme>>();
+  static DynamicThemeState? of(BuildContext context) {
+    return context.findAncestorStateOfType<DynamicThemeState>();
   }
 }
 
 class DynamicThemeState extends State<DynamicTheme> {
-  AppThemeType _appThemeType;
+  late AppThemeType _appThemeType;
 
   AppThemeType get appThemeType => _appThemeType;
   static const String _sharedPreferencesKey = 'appThemeType';

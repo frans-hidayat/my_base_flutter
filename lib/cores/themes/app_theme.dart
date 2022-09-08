@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
-enum AppThemeType { Maroon, Dark, Green }
+enum AppThemeType { maroon, dark, green }
 
 Color _textColorLight = Colors.black;
 Color _textColorDark = Colors.white;
 
 final appTheme = {
-  AppThemeType.Maroon: ThemeData(
-    primarySwatch: AppColors.maroon,
+  AppThemeType.maroon: ThemeData(
     primaryColor: AppColors.maroon,
-    accentColor: AppColors.maroon[50],
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: AppColors.maroon,
     ),
     textTheme: TextTheme(
@@ -29,19 +27,19 @@ final appTheme = {
       button: TextStyle(color: _textColorLight),
       overline: TextStyle(color: _textColorLight),
     ),
-    buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.accent),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.maroon,
       foregroundColor: Colors.white,
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.maroon[50],
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: AppColors.maroon)
+        .copyWith(secondary: AppColors.maroon[50]),
   ),
-  AppThemeType.Dark: ThemeData(
-    primarySwatch: AppColors.black,
+  AppThemeType.dark: ThemeData(
     primaryColor: AppColors.black,
-    accentColor: AppColors.black[50],
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: AppColors.black,
     ),
     textTheme: TextTheme(
@@ -59,20 +57,19 @@ final appTheme = {
       button: TextStyle(color: _textColorDark),
       overline: TextStyle(color: _textColorDark),
     ),
-    buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.accent),
+    buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.black,
       foregroundColor: AppColors.black[50],
     ),
-    buttonColor: _textColorDark,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.black[800],
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: AppColors.black)
+        .copyWith(secondary: AppColors.black[50]),
   ),
-  AppThemeType.Green: ThemeData(
-    primarySwatch: AppColors.green,
+  AppThemeType.green: ThemeData(
     primaryColor: AppColors.green,
-    accentColor: AppColors.green[50],
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: AppColors.green,
     ),
     textTheme: TextTheme(
@@ -90,13 +87,14 @@ final appTheme = {
       button: TextStyle(color: _textColorLight),
       overline: TextStyle(color: _textColorLight),
     ),
-    buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.accent),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.accent),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.green,
       foregroundColor: Colors.white,
     ),
-    buttonColor: _textColorDark,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.green[50],
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: AppColors.green)
+        .copyWith(secondary: AppColors.green[50]),
   )
 };

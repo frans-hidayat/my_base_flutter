@@ -1,1 +1,4 @@
-{}
+{
+    "theme" : "Theme",
+    "change_theme" : "Change Theme"
+}

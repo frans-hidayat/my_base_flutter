@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  int appThemeIndex = prefs.getInt("appThemeType") ?? AppThemeType.Maroon.index;
+  int appThemeIndex = prefs.getInt("appThemeType") ?? AppThemeType.maroon.index;
   runApp(MyApp(appThemeIndex));
 }
 
@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
       defaultTheme: AppThemeType.values[appThemeIndex],
       themedWidgetBuilder: (context, type) {
         return MaterialApp(
-          title: 'Vier',
+          title: 'FraMe',
           theme: appTheme[type],
           locale: const Locale('id'),
-          localizationsDelegates: [
+          localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,

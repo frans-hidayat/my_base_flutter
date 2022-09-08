@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_base_flutter/cores/themes/app_theme.dart';
 import 'package:my_base_flutter/cores/themes/dynamic_theme.dart';
+import 'package:my_base_flutter/generated/l10n.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -14,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Theme"),
+        title: Text(AppLocalizations.of(context).theme),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -71,20 +73,26 @@ class _MainScreenState extends State<MainScreen> {
               "Text overline",
               style: Theme.of(context).textTheme.overline,
             ),
-            TextField(),
-            RaisedButton(
+            const TextField(),
+            ElevatedButton(
               onPressed: () {
                 DynamicTheme.of(context)
-                    .setAppThemeType(AppThemeType.values[Random().nextInt(3)]);
+                    ?.setAppThemeType(AppThemeType.values[Random().nextInt(3)]);
+
+                if (Intl.getCurrentLocale() == "en") {
+                  AppLocalizations.load(const Locale("id"));
+                } else {
+                  AppLocalizations.load(const Locale("en"));
+                }
               },
-              child: Text("Change Theme"),
+              child: Text(AppLocalizations.of(context).change_theme),
             )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -1,4 +1,4 @@
-package com.vier.my_base_flutter
+package com.frame.my_base_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 
